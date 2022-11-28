@@ -47,7 +47,7 @@ export const useTaskStore = defineStore('taskStore', {
                 return task.id !== id;
             });
 
-            const res = await fetch('http://localhost:3000/tasks' + id, {
+            const res = await fetch('http://localhost:3000/tasks/' + id, {
                 method: 'DELETE',
             });
 
@@ -59,7 +59,7 @@ export const useTaskStore = defineStore('taskStore', {
             const task = this.tasks.find((task) => task.id === id);
             task.isFav = !task.isFav;
 
-            const res = await fetch('http://localhost:3000/tasks' + id, {
+            const res = await fetch('http://localhost:3000/tasks/' + id, {
                 method: 'PATCH',
                 body: JSON.stringify({ isFav: task.isFav }),
                 headers: { 'Content-Type': 'application/json' },
